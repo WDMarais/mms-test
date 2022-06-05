@@ -36,6 +36,19 @@ def f(a, x):
         c -= 1
 
 class TestFunction(unittest.TestCase):
+    # Could potentially use some dict structure to keep this array and its
+    # tests specifically grouped together. I opted to go for the simpler choice of
+    # just keeping them separate.
+    example_arr = [ 3, 4, 6, 9, 10, 12, 14, 15, 17, 19, 21 ]
+    def test_example_arr_equal(self):
+        actual = f(self.example_arr, 10)
+        expected = 10
+        self.assertEqual(actual, expected)
+
+    def test_example_arr_smaller(self):
+        actual = f(self.example_arr, 16)
+        expected = 15
+
     def test_list_all_smaller(self):
         actual = f([1, 2, 3, 4], 5)
         expected = 4
