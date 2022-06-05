@@ -23,7 +23,17 @@ def f(a, x):
     if not params_are_valid(a, x, N):
         return -1
 
+    # If first (and since sorted, smallest) element is larger than x,
+    # the list contains no elements smaller than x
+    if a[0] > x:
+        return -1
+
 class TestFunction(unittest.TestCase):
+    def test_list_all_larger(self):
+        actual = f([2, 3, 4], 1)
+        expected = -1
+        self.assertEqual(actual, expected)
+
     def test_empty_array(self):
         actual = f([], 1)
         expected = -1
