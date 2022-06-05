@@ -28,7 +28,19 @@ def f(a, x):
     if a[0] > x:
         return -1
 
+    c = N - 1
+    while c > 0: # 0 was checked first
+        el = a[c]
+        if el <= x:
+            return el
+        c -= 1
+
 class TestFunction(unittest.TestCase):
+    def test_list_all_smaller(self):
+        actual = f([1, 2, 3, 4], 5)
+        expected = 4
+        self.assertEqual(actual, expected)
+
     def test_list_all_larger(self):
         actual = f([2, 3, 4], 1)
         expected = -1
